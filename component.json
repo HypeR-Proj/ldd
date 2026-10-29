@@ -33,5 +33,22 @@
       "app-test",
       "APP_TEST_PACKAGE=hyper-ldd"
     ]
-  ]
+  ],
+  "cargo_context": {
+    "Cargo.toml": {
+      "workspace": null,
+      "membership": "..",
+      "dependency_paths": {
+        "target.cfg(target_os = \"hyper\")/dependencies/hyper-clap-shared": "lib/clap"
+      },
+      "inherited_dependencies": {
+        "/dependencies/clap": {
+          "workspace": true
+        },
+        "target.cfg(target_os = \"hyper\")/dependencies/hyper-clap-shared": {
+          "workspace": true
+        }
+      }
+    }
+  }
 }
