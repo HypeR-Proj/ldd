@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "name": "ldd",
+  "kind": "application",
+  "origin": {
+    "repository": "https://github.com/roolrz/HypeR",
+    "commit": "8d42d047058a2b58a291803700e86487fb723f7a"
+  },
+  "sources": {
+    "Cargo.toml": "app/ldd/Cargo.toml",
+    "component.mk": "app/ldd/component.mk",
+    "src/cli.rs": "app/ldd/src/cli.rs",
+    "src/elf.rs": "app/ldd/src/elf.rs",
+    "src/graph.rs": "app/ldd/src/graph.rs",
+    "src/lib.rs": "app/ldd/src/lib.rs",
+    "src/main.rs": "app/ldd/src/main.rs",
+    "src/output.rs": "app/ldd/src/output.rs",
+    "tests/elf.rs": "app/ldd/tests/elf.rs",
+    "tests/fixtures.rs": "app/ldd/tests/fixtures.rs",
+    "tests/graph.rs": "app/ldd/tests/graph.rs"
+  },
+  "SPDX-FileCopyrightText": "2026 roolrz",
+  "SPDX-License-Identifier": "Apache-2.0",
+  "mounts": {
+    "": "app/ldd"
+  },
+  "packages": [
+    "hyper-ldd"
+  ],
+  "tests": [
+    [
+      "make",
+      "app-test",
+      "APP_TEST_PACKAGE=hyper-ldd"
+    ]
+  ]
+}
