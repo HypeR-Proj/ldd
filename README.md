@@ -5,16 +5,40 @@ SPDX-License-Identifier: Apache-2.0
 
 # ldd
 
-A HypeR component. See [HypeR](https://github.com/HypeR-Proj/HypeR) for
-workspace setup and the installed SDK build boundary.
+ELF shared-library dependency inspection.
 
-## Workspace tests
+Parses ELF dependency information and reports library resolution through the visible
+filesystem. Command parsing and inspection logic are separate from the executable output
+adapter.
 
-Use the [HypeR workspace](https://github.com/HypeR-Proj/HypeR) to resolve dependencies:
+See the [implementation entry](src/lib.rs) and [component declaration](component.json)
+for the public interfaces, build dependencies and delivered artifacts.
+
+## Usage
+
+In a Native session with the required capabilities:
 
 ```sh
-python3 project.py test ldd
+ldd --help
 ```
 
-Paths in the documentation are relative to the repo-managed workspace root.
-Edit this repository and prepare the workspace again before building.
+## Boundaries
+
+This is an inspection command, not the runtime linker. Resolution only sees the caller’s
+namespace and the search policy implemented by this tool.
+
+## Build and test
+
+Use this checkout inside the [repo-managed workspace](https://github.com/HypeR-Proj/HypeR).
+From this repository directory:
+
+```sh
+make
+make test
+```
+
+An absolute `OUT=/path/to/out` selects a shared output directory. The module
+entry delegates to build/system, which prepares the installed SDK and declared
+dependencies. Native binaries require HypeR; host module checks cover the tests
+selected by component.json. A standalone clone does not contain the workspace’s
+other source repositories or Native SDK.
